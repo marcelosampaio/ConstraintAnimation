@@ -8,21 +8,54 @@
 
 #import "ViewController.h"
 
-@interface ViewController ()
+@interface ViewController (){
+    double innerViewTopPosition;
+}
 
 @end
 
 @implementation ViewController
 
+#pragma mark - View Life Cycle
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+    
+    [self resetInitial];
+
+    
+}
+#pragma mark - Helpers
+-(void)resetInitial{
+    self.constraintInnerViewTop.constant = -780.0f;
+    _innerView.layer.borderColor = [UIColor whiteColor].CGColor;
+    _innerView.layer.borderWidth = 1.3f;
 }
 
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+#pragma mark - UI Actions
+- (IBAction)proceed:(id)sender {
+    
+    innerViewTopPosition = (self.view.bounds.size.height/2.00f) - (self.innerView.bounds.size.height/2.00f) + 75.00f;
+    self.constraintInnerViewTop.constant = innerViewTopPosition;
+    [UIView animateWithDuration:0.5f animations:^{
+        // Animation
+        _innerView.transform = CGAffineTransformMakeRotation(M_PI);
+        [self.view layoutIfNeeded];
+    } completion:^(BOOL finished) {
+        // completion
+        innerViewTopPosition = (self.view.bounds.size.height/2.00f) - (self.innerView.bounds.size.height/2.00f);
+        self.constraintInnerViewTop.constant = innerViewTopPosition;
+        [UIView animateWithDuration:0.4f animations:^{
+            // animation 2
+            //_innerView.transform = CGAffineTransformMakeScale(0.9, 0.9);
+            [self.view layoutIfNeeded];
+        } completion:^(BOOL finished) {
+            // completion 2
+            [self.view layoutIfNeeded];
+            //
+        }];
+        
+    }];
+    
 }
 
 
