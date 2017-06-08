@@ -9,7 +9,7 @@
 #import "ViewController.h"
 
 @interface ViewController (){
-    double innerViewTopPosition;
+    double innerViewPosition;
 }
 
 @end
@@ -27,7 +27,9 @@ static double defaultPosition = -720.00f;
 #pragma mark - Helpers
 -(void)resetInitial{
     self.constraintInnerViewTop.constant = defaultPosition;
+    // reset label to upside down
     _message.transform = CGAffineTransformMakeRotation(M_PI);
+    // label layer
     _innerView.layer.borderColor = [UIColor whiteColor].CGColor;
     _innerView.layer.borderWidth = 1.3f;
 }
@@ -35,8 +37,8 @@ static double defaultPosition = -720.00f;
 #pragma mark - UI Actions
 - (IBAction)proceed:(id)sender {
     
-    innerViewTopPosition = (self.view.bounds.size.height/2.00f) - (self.innerView.bounds.size.height/2.00f) + 75.00f;
-    self.constraintInnerViewTop.constant = innerViewTopPosition;
+    innerViewPosition = (self.view.bounds.size.height/2.00f) - (self.innerView.bounds.size.height/2.00f) + 75.00f;
+    self.constraintInnerViewTop.constant = innerViewPosition;
     [UIView animateWithDuration:0.5f animations:^{
         // Animation
         //   for anti clockwise use -3.1415 or clockwise use M_PI
@@ -44,8 +46,8 @@ static double defaultPosition = -720.00f;
         [self.view layoutIfNeeded];
     } completion:^(BOOL finished) {
         // completion
-        innerViewTopPosition = (self.view.bounds.size.height/2.00f) - (self.innerView.bounds.size.height/2.00f);
-        self.constraintInnerViewTop.constant = innerViewTopPosition;
+        innerViewPosition = (self.view.bounds.size.height/2.00f) - (self.innerView.bounds.size.height/2.00f);
+        self.constraintInnerViewTop.constant = innerViewPosition;
         [UIView animateWithDuration:0.4f animations:^{
             // animation 2
             [self.view layoutIfNeeded];
