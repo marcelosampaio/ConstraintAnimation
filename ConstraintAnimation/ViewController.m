@@ -13,7 +13,7 @@
 }
 
 @end
-
+static double defaultPosition = -720.00f;
 @implementation ViewController
 
 #pragma mark - View Life Cycle
@@ -26,7 +26,7 @@
 }
 #pragma mark - Helpers
 -(void)resetInitial{
-    self.constraintInnerViewTop.constant = -780.0f;
+    self.constraintInnerViewTop.constant = defaultPosition;
     _message.transform = CGAffineTransformMakeRotation(M_PI);
     _innerView.layer.borderColor = [UIColor whiteColor].CGColor;
     _innerView.layer.borderWidth = 1.3f;
@@ -39,6 +39,7 @@
     self.constraintInnerViewTop.constant = innerViewTopPosition;
     [UIView animateWithDuration:0.5f animations:^{
         // Animation
+        //   for anti clockwise use -3.1415 or clockwise use M_PI
         _innerView.transform = CGAffineTransformMakeRotation(M_PI);
         [self.view layoutIfNeeded];
     } completion:^(BOOL finished) {
