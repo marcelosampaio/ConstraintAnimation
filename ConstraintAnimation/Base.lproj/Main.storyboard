@@ -64,11 +64,12 @@
                     <connections>
                         <outlet property="constraintInnerViewTop" destination="Aag-xR-Yc4" id="pDk-iZ-y7Y"/>
                         <outlet property="innerView" destination="0B8-Qm-aum" id="r1a-pX-NwJ"/>
+                        <outlet property="message" destination="gfO-ZG-WX5" id="K3x-fY-lok"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="136.80000000000001" y="137.18140929535232"/>
+            <point key="canvasLocation" x="247" y="123"/>
         </scene>
     </scenes>
 </document>

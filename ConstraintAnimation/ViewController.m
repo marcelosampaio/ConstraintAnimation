@@ -27,6 +27,7 @@
 #pragma mark - Helpers
 -(void)resetInitial{
     self.constraintInnerViewTop.constant = -780.0f;
+    _message.transform = CGAffineTransformMakeRotation(M_PI);
     _innerView.layer.borderColor = [UIColor whiteColor].CGColor;
     _innerView.layer.borderWidth = 1.3f;
 }
@@ -46,7 +47,6 @@
         self.constraintInnerViewTop.constant = innerViewTopPosition;
         [UIView animateWithDuration:0.4f animations:^{
             // animation 2
-            //_innerView.transform = CGAffineTransformMakeScale(0.9, 0.9);
             [self.view layoutIfNeeded];
         } completion:^(BOOL finished) {
             // completion 2

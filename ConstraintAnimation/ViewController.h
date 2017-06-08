@@ -11,6 +11,7 @@
 @interface ViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UIView *innerView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintInnerViewTop;
+@property (weak, nonatomic) IBOutlet UILabel *message;
 
 
 @end
