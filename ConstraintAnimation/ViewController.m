@@ -37,8 +37,11 @@ static double defaultPosition = -720.00f;
 #pragma mark - UI Actions
 - (IBAction)proceed:(id)sender {
     
+    // set constraints
     innerViewPosition = (self.view.bounds.size.height/2.00f) - (self.innerView.bounds.size.height/2.00f) + 75.00f;
     self.constraintInnerViewTop.constant = innerViewPosition;
+    
+    // animate view
     [UIView animateWithDuration:0.5f animations:^{
         // Animation
         //   for anti clockwise use -3.1415 or clockwise use M_PI
@@ -53,8 +56,6 @@ static double defaultPosition = -720.00f;
             [self.view layoutIfNeeded];
         } completion:^(BOOL finished) {
             // completion 2
-            [self.view layoutIfNeeded];
-            //
         }];
         
     }];
